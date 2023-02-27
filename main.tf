@@ -22,3 +22,17 @@ resource "aws_instance" "dev" {
     Name = "dev${count.index}"
   }
 }
+
+# create group security
+resource "aws_security_group" "allow_ssh" {
+  name        = "allow_ssh"
+  description = "Allow ssh acess"
+
+  ingress {
+    description      = "Allow ssh acess"
+    from_port        = 22
+    to_port          = 22
+    protocol         = "tcp"
+    cidr_blocks      = ["187.127.230.180/32"]
+    # ipv6_cidr_blocks = [aws_vpc.main.ipv6_cidr_block]
+  }
