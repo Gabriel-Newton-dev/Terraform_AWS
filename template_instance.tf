@@ -1,7 +1,7 @@
 # Create instance
 resource "aws_instance" "dev" {
   count = 3
-  ami = "ami-026c8acd92718196b"
+  ami = var.amis["us-east-1"]
   instance_type = "t2.micro"
   key_name = "terraform_aws"
   tags = {
@@ -13,7 +13,7 @@ resource "aws_instance" "dev" {
 
 # create new instance - dev 4 - bind resource bucket s3
 resource "aws_instance" "dev4" {
-  ami = "ami-026c8acd92718196b"
+  ami = var.amis["us-east-1"]
   instance_type = "t2.micro"
   key_name = "terraform_aws"
   tags = {
@@ -25,7 +25,7 @@ resource "aws_instance" "dev4" {
 
 # create new instance -dev 5
 resource "aws_instance" "dev5" {
-  ami = "ami-026c8acd92718196b"
+  ami = var.amis["us-east-1"]
   instance_type = "t2.micro"
   key_name = "terraform_aws" #chave-ssh
   tags = {
@@ -39,7 +39,7 @@ resource "aws_instance" "dev5" {
 
 resource "aws_instance" "dev6" {
   provider = "aws.us-east-2"  
-  ami = "ami-0d8f6eb4f641ef691"  # catch(pegar) in launch instance
+  ami = var.amis["us-east-2"]  # catch(pegar) in launch instance
   instance_type = "t2.micro"
   key_name = "terraform_aws"
   tags = {
