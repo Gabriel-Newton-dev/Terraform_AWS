@@ -8,7 +8,7 @@ resource "aws_security_group" "allow_ssh" {
     from_port        = 22
     to_port          = 22
     protocol         = "tcp"
-    cidr_blocks      = ["187.127.230.180/32"]
+    cidr_blocks      = var.cidr_blocks
     # ipv6_cidr_blocks = [aws_vpc.main.ipv6_cidr_block]
   }
   tags ={
@@ -28,7 +28,7 @@ resource "aws_security_group" "allow_ssh_us_east_2" {
     from_port        = 22
     to_port          = 22
     protocol         = "tcp"
-    cidr_blocks      = ["187.127.230.180/32"]
+    cidr_blocks      = var.cidr_blocks
     # ipv6_cidr_blocks = [aws_vpc.main.ipv6_cidr_block]
   }
   tags ={
