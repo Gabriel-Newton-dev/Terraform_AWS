@@ -61,3 +61,14 @@ resource "aws_instance" "dev6" {
   vpc_security_group_ids = ["${aws_security_group.allow_ssh_us_east_2.id}"]
   depends_on = "aws_dynamodb_table.dynamodb-homologacao"
 }
+
+resource "aws_instance" "dev7"{
+  provider = "aws.us-east-2"
+  ami = var.amis["us-east2"]
+  instance_type = "t2.micro"
+  key_name = var.key_name
+  tags = {
+    Name = "dev7"
+  }
+  vpc_security_group_ids = ["${aws_security_group.allow_ssh_us_east_2}"]
+}
